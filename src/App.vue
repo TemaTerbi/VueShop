@@ -1,15 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <top/>
+  <!-- <Cart v-if="showModal" @close="showModal = false" v-bind:modal="showModal"/> -->
+  <TovarList v-bind:products="products"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import top from '@/components/top'
+import TovarList from '@/components/TovarList'
+import Cart from '@/components/Cart'
+
 
 export default {
   name: 'App',
+  data(){
+    return {
+      products: [
+        {title: 'Молоко', price: '100', img: 'milk'},
+        {title: 'Колбаса', price: '1000', img: 'meats'},
+        {title: 'Кефир', price: '30', img: 'kefir'},
+        {title: 'Хлеб', price: '50', img: 'bread'},
+      ],
+      showModal: false
+    }
+  },
   components: {
-    HelloWorld
+    top, TovarList, Cart
   }
 }
 </script>
@@ -21,6 +36,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  background-color: #e2e2e2;
+}
+
+.container {
+  width: 1200px;
+  margin: auto;
 }
 </style>
